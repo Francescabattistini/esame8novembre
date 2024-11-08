@@ -56,7 +56,13 @@ public class BookingService {
     }
 
 
-    public Booking bookingupDate(BookingDto body, Long bookingId){}
+    public Booking bookingupDate(BookingDto body, Long bookingId){
+        //1.trova prenotazione esistente
+        //2.recupera l'evento tramite id(event e user)
+        //3.aggiorna i dati prenotazione
+        //4.salva
+
+    }
 
 
 public void findAndDelate(Long bookingId){
