@@ -44,22 +44,26 @@ public class BookingService {
         //2. trovare id user
         //3. creare la prenotazione
         //4. salvarla
-            Long eventId = body.idEvent();
-            Event evento = eventService.findById(eventId);
+        Long eventId = body.idEvent();
+        Event evento = eventService.findById(eventId);
 
-            Long userId = body.idUser();
-            User utente = userService.findById(userId);
+        Long userId = body.idUser();
+        User utente = userService.findById(userId);
 
-            Booking booking = new Booking(utente, evento);
+        Booking booking = new Booking(utente, evento);
 
-            return bookingRepository.save(booking);
-        }
-
+        return bookingRepository.save(booking);
     }
 
 
-    public Booking bookingupDate(){}
+    public Booking bookingupDate(BookingDto body, Long bookingId){}
 
-    public void findAndDelate(){}
+
+public void findAndDelate(Long bookingId){
+    Booking booking = this.findById(bookingId);
+    this.bookingRepository.delete(booking);
 
 }
+
+}
+
