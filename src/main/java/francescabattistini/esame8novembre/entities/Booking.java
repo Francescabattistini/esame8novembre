@@ -8,7 +8,7 @@ import lombok.*;
 @ToString
 @NoArgsConstructor
 @Entity
-@Table(name = "booking")
+@Table(name = "reservations")
 public class Booking {
     @Id
     @GeneratedValue

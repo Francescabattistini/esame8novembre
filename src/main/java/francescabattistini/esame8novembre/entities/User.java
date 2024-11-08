@@ -16,10 +16,10 @@ import java.util.List;
 @ToString
 @NoArgsConstructor
 @Entity
-@Table(name = "user")
+@Table(name = "users")
 @JsonIgnoreProperties({"password", "role", "accountNonLocked",
         "credentialsNonExpired", "accountNonExpired", "authorities", "enabled"})// così passw e ruolo non sono inclusi nel json
-public class User implements UserDetails {
+public class User implements UserDetails  {
     @Id
     @GeneratedValue
     @Setter(AccessLevel.NONE)
@@ -35,16 +35,9 @@ public class User implements UserDetails {
     private List<Booking> bookingList;
     @JsonIgnore
     @OneToMany(mappedBy = "manager")
-    private List <Event>  eventList;
+    private List <Event> eventList;
 
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority(this.role.name()));
-    }
-    @Override
-    public String getUsername() {
-        return this.getEmail();
-    }
+
 
     public User(String name, String secondname, String email, String password) {
         this.name = name;
@@ -52,5 +45,15 @@ public class User implements UserDetails {
         this.email = email;
         this.password = password;
         this.role = Role.USER;
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return List.of(new SimpleGrantedAuthority(this.role.name()));
+    }
+
+    @Override
+    public String getUsername() {
+        return this.getEmail();
     }
 }

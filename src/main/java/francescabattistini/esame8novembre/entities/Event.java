@@ -10,7 +10,7 @@ import java.time.LocalDate;
 @ToString
 @NoArgsConstructor
 @Entity
-@Table(name = "event")
+@Table(name = "events")
 public class Event {
     @Id
     @GeneratedValue
@@ -22,17 +22,16 @@ public class Event {
     private String locationEvento;
     private int numPlaesAvabile;
     @ManyToOne
-    @JoinColumn(name= "id_manager")
-    private User Manager;// riferimento al creatore stesso
+    @JoinColumn(name = "id_manager")
+    private User manager;// riferimento al creatore stesso
 
-    public Event(String eventName, String descriptionEvent, LocalDate dateEvent,
-                 String locationEvento, int numPlaesAvabile, User manager) {
+    public Event(String eventName, String descriptionEvent, LocalDate dateEvent, String locationEvento, int numPlaesAvabile, User manager) {
         this.eventName = eventName;
         this.descriptionEvent = descriptionEvent;
         this.dateEvent = dateEvent;
         this.locationEvento = locationEvento;
         this.numPlaesAvabile = numPlaesAvabile;
-        Manager = manager;
+        this.manager = manager;
     }
 }
 
