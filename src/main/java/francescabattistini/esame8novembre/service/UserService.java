@@ -26,7 +26,8 @@ public class UserService {
         return userRepository.findAll(pageable);
     }
     public User findById(Long userId) {
-        return this.userRepository.findById(userId).orElseThrow(() -> new NotFoundException(String.valueOf(userId)));
+        return this.userRepository.findById(userId)
+                .orElseThrow(() -> new BadRequestException("Utente non trovato con ID: " + userId));
     }
 
 
